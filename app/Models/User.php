@@ -2,43 +2,45 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+    protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
+     protected $fillable = [
+        'id',
         'name',
+        'username',
         'email',
         'password',
+        'address',
+        'company',
+        'mobile',
+        'city',
+        // "updated_at"
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function rules(){
+         $rules = [
+             'name'     => 'required|max:20',
+             'username' => 'required|max:22',
+             'email'    => 'required',
+             'password' => 'required',
+         ];
+         return $rules;
+    }
+    public function message($request){
+         $message = [
+             'name.required'     => ['message' => 'Name is Required'],
+             'name.max'          => ['message'  => 'Name max length is 20'],
+             'username.required' => ['message' => 'User Name is Required'],
+            //  'email'    => 'required',
+            //  'password' => 'required',
+         ];
+        //  dd($message);
+         return $message;
+    }
 }
