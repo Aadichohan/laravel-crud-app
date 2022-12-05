@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('content')
+<?php //dd($user); ?>
 <div class="row">
   <div class="col-md-6">
     <a class="btn btn-success" href="/users/add">Add New</a>
@@ -8,32 +9,30 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Option</th>
+      <!-- <th scope="col">#</th> -->
+      <th scope="col">Name</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Company</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">City</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      @foreach ($users as $user)
+        <th scope="row">{{ $user->name }}</th>
+        <th>{{ $user->username }}</th>
+        <th>{{ $user->email }}</th>
+        <th>{{ $user->address }}</th>
+        <th>{{ $user->company }}</th>
+        <th>{{ $user->mobile }}</th>
+        <th>{{ $user->city }}</th>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
+
   </tbody>
 </table>
-
+{!! $users->links() !!}
 @endsection

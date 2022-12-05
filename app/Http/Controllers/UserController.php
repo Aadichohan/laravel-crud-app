@@ -11,8 +11,8 @@ class UserController extends Controller
     //
 
     public function index(){
-        $user = User::get()->toArray();
-        return view("User/List");
+        $users = User::paginate(2);
+        return view("User/List", compact('users'));
     }
 
     public function add(){
@@ -21,13 +21,13 @@ class UserController extends Controller
     }
 
     public function saveUser(UserAddRequest $request){
-        dd($request->all());
+        // dd($request->all());
         
         $user = new User;
-      //  try {
-            $request->validate($request, $user->rules(), $user->message($request));
-            dd($request);
-           // DB::beginTransaction();
+       try {
+            // $request->validate($request, $user->rules(), $user->message($request));
+            // dd($request);
+            DB::beginTransaction();
          if(!empty($request->id)){
              
         }
@@ -35,15 +35,15 @@ class UserController extends Controller
                 // dd($request->all());
                $obj =  User::create($request->all());
             }
-           // DB::commit();
-           // $status = '200';
-            //return redirect('/users')->with($status, 'Added Successfully');
-        // } catch (\Throwable $th) {
-        //     DB::rollback();
+            DB::commit();
+           $status = '200';
+            return redirect('/users')->with($status, 'Added Successfully');
+        } catch (\Throwable $th) {
+            DB::rollback();
 
-        //     return redirect('/users')->with($th, 'Error');
-        // }
-     //   dd($request->input());
+            return redirect('/users')->with($th, 'Error');
+        }
+       dd($request->input());
        // $user = User::get()->toArray();
        // return view("User/UserForm");
     }

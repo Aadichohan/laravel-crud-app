@@ -25,13 +25,19 @@ class UserAddRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required',
-            'username' => 'required|max:3'
+            'name'     => 'required|min:4|max:20',
+            'username' => 'required|min:4|max:20',
+            'email'    => 'required|min:12|max:20',
+            'password' => 'required|min:8|max:12',
+            'address'  => 'required|min:4|max:25',
+            'company'  => 'required|min:4|max:20',
+            'mobile'   => 'required|min:11|max:13',
+            'city'     => 'required|min:4|max:20'
         ];
 
      $message = [
              'name.required'     => ['message' => 'Name is Required'],
-             'username.max'          => ['message'  => 'Name max length is 20'],
+             'username.max'      => ['message'  => 'Name max length is 20'],
              'username.required' => ['message' => 'User Name is Required'],
             //  'email'    => 'required',
             //  'password' => 'required',
