@@ -17,6 +17,7 @@
       <th scope="col">Company</th>
       <th scope="col">Mobile</th>
       <th scope="col">City</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,7 @@
         <th>{{ $user->company }}</th>
         <th>{{ $user->mobile }}</th>
         <th>{{ $user->city }}</th>
+        <th><a class="btn btn-success" href="/users/edit/{{ $user->id }}"> Edit </a></th>
     </tr>
     @endforeach
 

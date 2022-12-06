@@ -21,6 +21,7 @@
         color:red;
     }
 </style>
+
 <div class="row row-page">
   <div class="col-sm-12" style="background-color:#e4e6e9">
        <form method="post" action="/users/add">
@@ -28,17 +29,17 @@
         <div class="col-sm-10 form-page">
         <h2>User Add Form</h2>
         <div class="form-group row">
-            <input type="hidden"  name="id"  class="" id="id">
+            <input type="hidden"  name="id"  class="" id="id" value="{{ $user['id']}}" >
             <div class="col-sm-6">
                    <label for="name" class="col-sm-3 control-label">Name: </label>
-                   <input type="text"  name="name"  class="form-control-plaintext col-sm-8 inline-block input" id="name">
+                   <input type="text"  name="name"  class="form-control-plaintext col-sm-8 inline-block input" id="name" value="{{old('name') ? old('name') : $user['name']}}">
                    <div class="col-sm-6 mx-auto">
                       <span class="error">{{ $errors->first('name') }}</span>
                    </div>  
                 </div>
               <div class="col-sm-6">
                     <label for="username" class="col-sm-3 control-label">User Name: </label>
-                    <input type="text"  name="username" class="form-control-plaintext col-sm-8 inline-block input" id="username" >
+                    <input type="text"  name="username" class="form-control-plaintext col-sm-8 inline-block input" id="username" value="{{old('username') ? old('username') : $user['username']}}">
                     <div class="col-sm-6 mx-auto">
                       <span class="error">{{ $errors->first('username') }}</span>
                     </div>  
@@ -47,14 +48,14 @@
         <div class="form-group row">
             <div class="col-sm-6">
                    <label for="email" class="col-sm-3 control-label">Email: </label>
-                   <input type="email" name="email" class="form-control-plaintext col-sm-8 inline-block input" id="email">
+                   <input type="email" name="email" class="form-control-plaintext col-sm-8 inline-block input" id="email" value="{{old('email') ? old('email') : $user['email']}}">
                    <div class="col-sm-6 mx-auto">
                       <span class="error">{{ $errors->first('email') }}</span>
                    </div> 
             </div>
               <div class="col-sm-6">
                     <label for="password" class="col-sm-3 control-label">Password: </label>
-                    <input type="password"  name="password" class="form-control-plaintext col-sm-8 inline-block input" id="password" >
+                    <input type="password"  name="password" class="form-control-plaintext col-sm-8 inline-block input" id="password"  value="{{old('password') ? old('password') : $user['password']}}">
                     <div class="col-sm-6 mx-auto">
                        <span class="error">{{ $errors->first('password') }}</span>
                     </div>  
@@ -63,14 +64,14 @@
         <div class="form-group row">
             <div class="col-sm-6">
                    <label for="address" class="col-sm-3 control-label">Address: </label>
-                   <input type="text"  name="address"  class="form-control-plaintext col-sm-8 inline-block input" id="address">
+                   <input type="text"  name="address"  class="form-control-plaintext col-sm-8 inline-block input" id="address" value="{{old('address') ? old('address') : $user['address']}}">
                    <div class="col-sm-6 mx-auto">
                       <span class="error">{{ $errors->first('address') }}</span>
                    </div> 
             </div>
               <div class="col-sm-6">
                    <label for="company" class="col-sm-3 control-label">Company: </label>
-                   <input type="text"  name="company"  class="form-control-plaintext col-sm-8 inline-block input" id="company" > 
+                   <input type="text"  name="company"  class="form-control-plaintext col-sm-8 inline-block input" id="company" value="{{old('company') ? old('company') : $user['company']}}"> 
                    <div class="col-sm-6 mx-auto">
                        <span class="error">{{ $errors->first('company') }}</span>
                    </div>  
@@ -79,14 +80,14 @@
         <div class="form-group row">
             <div class="col-sm-6">
                    <label for="mobile" class="col-sm-3 control-label">Mobile: </label>
-                   <input type="text"  name="mobile" class="form-control-plaintext col-sm-8 inline-block input" id="mobile">
+                   <input type="text"  name="mobile" class="form-control-plaintext col-sm-8 inline-block input" id="mobile" value="{{old('mobile') ? old('mobile') : $user['mobile']}}" >
                    <div class="col-sm-6 mx-auto">
                        <span class="error">{{ $errors->first('mobile') }}</span>
                    </div> 
             </div>
               <div class="col-sm-6">
                    <label for="city" class="col-sm-3 control-label">City: </label>
-                   <input type="text"  name="city" class="form-control-plaintext col-sm-8 inline-block input" id="city" >
+                   <input type="text"  name="city" class="form-control-plaintext col-sm-8 inline-block input" id="city" value="{{old('city') ? old('city') : $user['city']}}" >
                    <div class="col-sm-6 mx-auto">
                        <span class="error">{{ $errors->first('city') }}</span>
                    </div>  

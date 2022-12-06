@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,11 @@ use App\Http\Controllers\UserController;
 Route::redirect('/','/users');
 
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users', [UserController::class, 'index']);
-
 Route::get('/users/add', [UserController::class, 'add']);
+Route::get('/users/edit/{id}', [UserController::class, 'add']);
 Route::post('/users/add', [UserController::class, 'saveUser']);
+
+Route::get('/students', [StudentController::class, 'index']);
+Route::get('/students/add', [StudentController::class, 'add']);
+Route::get('/students/edit/{id}', [StudentController::class, 'add']);
+Route::post('/students/add', [StudentController::class, 'saveStudent']);

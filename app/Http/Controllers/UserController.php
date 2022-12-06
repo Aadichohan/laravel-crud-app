@@ -15,9 +15,18 @@ class UserController extends Controller
         return view("User/List", compact('users'));
     }
 
-    public function add(){
-        $user = User::get()->toArray();
-        return view("User/UserForm");
+    public function add( $id){
+        if($id){
+            $user = new User;
+            $usr  =  $user->find($id);
+           //dd($usr->toArray());
+           $user = $usr->toArray();
+        }
+        else{
+            $user = null;
+        }
+        // dd($user);
+        return view("User/UserForm",compact('user'));
     }
 
     public function saveUser(UserAddRequest $request){
@@ -29,6 +38,9 @@ class UserController extends Controller
             // dd($request);
             DB::beginTransaction();
          if(!empty($request->id)){
+
+               $usr = $user->find($request->id);
+               $usr->update($request->all());
              
         }
         else{
