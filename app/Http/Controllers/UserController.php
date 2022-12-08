@@ -15,7 +15,7 @@ class UserController extends Controller
         return view("User/List", compact('users'));
     }
 
-    public function add( $id){
+    public function add( $id = null){
         if($id){
             $user = new User;
             $usr  =  $user->find($id);
